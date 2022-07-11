@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import HomeLayout from '../../layout/HomeLayout'
-import { PROJECT_BASE_PATH } from '../../router/routes.config'
+import { PROJECT_BASE_PATH } from "../../router/constants"
 
 const ProjectList = () => {
   return (

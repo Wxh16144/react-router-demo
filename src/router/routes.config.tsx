@@ -9,11 +9,7 @@ import { companyLabourRoutes, projectLabourRoutes } from './labour.routes'
 import Home from "../pages/home/home";
 import ProjectList from "../pages/project/list";
 import ProjectHome from "../pages/project/home";
-
-// constants
-export const COMPANY_BASE_PATH = '/company';
-export const PROJECT_BASE_PATH = '/project';
-export const PROJECT_HOME_BASE_PATH = `${PROJECT_BASE_PATH}/:projectId`;
+import { COMPANY_BASE_PATH, PROJECT_BASE_PATH, PROJECT_HOME_BASE_PATH } from "./constants";
 
 const router = [
   {
