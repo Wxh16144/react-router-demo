@@ -8,9 +8,11 @@ specifiers:
   '@vitejs/plugin-react': ^1.3.0
   ahooks: ^3.5.2
   antd: ^4.21.6
+  classnames: ^2.3.1
   history: 4.10.1
   less: ^4.1.3
   lodash-es: ^4.17.21
+  path-to-regexp: ^6.2.1
   react: ^17.0.0
   react-dom: ^17.0.0
   react-router: 5.3.3
@@ -21,9 +23,11 @@ specifiers:
 dependencies:
   ahooks: 3.5.2_react@17.0.2
   antd: 4.21.6_react-dom@17.0.2+react@17.0.2
+  classnames: 2.3.1
   history: 4.10.1
   less: 4.1.3
   lodash-es: 4.17.21
+  path-to-regexp: 6.2.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-router: 5.3.3_react@17.0.2
@@ -1118,6 +1122,10 @@ packages:
     resolution: {integrity: sha512-n43JRhlUKUAlibEJhPeir1ncUID16QnEjNpwzNdO3Lm4ywrBpBZ5oLD0I6br9evr1Y9JTqwRtAh7JLoOzAQdVA==}
     dependencies:
       isarray: 0.0.1
+    dev: false
+
+  /path-to-regexp/6.2.1:
+    resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==}
     dev: false
 
   /picocolors/1.0.0:

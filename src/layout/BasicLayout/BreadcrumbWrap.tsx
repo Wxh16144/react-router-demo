@@ -19,7 +19,6 @@ const BreadcrumbWrap = ({ routes }: any) => {
 
   return (
     <div>
-      <span>面包屑:</span>
       <Breadcrumb>
         {breadcrumbData.map((item, index) => (
           <Breadcrumb.Item key={item.path}>

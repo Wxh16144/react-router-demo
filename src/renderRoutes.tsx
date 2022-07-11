@@ -40,7 +40,7 @@ function getRouteElement({ route, index, opts }:any) {
   return (
     <Route
       {...routeProps}
-      render={(props: any) => {
+      render={(props) => {
         return renderComponent({ route, opts, props });
       }}
     />
