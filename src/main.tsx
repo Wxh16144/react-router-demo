@@ -9,6 +9,8 @@ import routes from './router/routes.config';
 
 export const history = createBrowserHistory()
 
+console.log(routes);
+
 
 render(
   <>

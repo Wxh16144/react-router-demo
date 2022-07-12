@@ -16,7 +16,7 @@ const HomeLayout: FC<any> = ({ children }) => {
       <NavLink
         activeClassName={styles.active}
         exact
-        to={COMPANY_BASE_PATH}>
+        to='/'>
         企业工作台
       </NavLink>
 

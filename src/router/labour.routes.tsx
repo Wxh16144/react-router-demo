@@ -33,19 +33,19 @@ const projectLabourRoutesEvaluation = labourRoutesEvaluation.map((routeItem) => 
   path: `${PROJECT_HOME_BASE_PATH}${routeItem.path}`,
 }))
 
-const companyLabourRoutesEvaluation = labourRoutesEvaluation.map((routeItem) => ({
-  ...routeItem,
-  path: `${COMPANY_BASE_PATH}${routeItem.path}`,
-}))
+// const companyLabourRoutesEvaluation = labourRoutesEvaluation.map((routeItem) => ({
+//   ...routeItem,
+//   path: `${routeItem.path}`,
+// }))
 
 const labourRoutes: RouteItem[] = [
   {
-    path: `${COMPANY_BASE_PATH}${LABOR_BASE_PATH}`,
+    path: `${LABOR_BASE_PATH}`,
     name: 'labour',
     icon: '《图标》',
     title: '劳务管理',
     routes: [
-      ...companyLabourRoutesEvaluation,
+      ...labourRoutesEvaluation,
     ]
   },
   ...projectLabourRoutesEvaluation,
