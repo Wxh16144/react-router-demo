@@ -19,7 +19,6 @@ const SideMenu = (props: SideMenuProps) => {
   const { menuDatas, collapsed, afterClick, ...menuProps } = props;
   const { pathname } = useLocation()
 
-  console.log(pathname);
   
   const flatMenuKeys = getFlatMenuKeys(menuDatas);
   const selectedKeys = getSelectedMenuKeys(pathname, flatMenuKeys);

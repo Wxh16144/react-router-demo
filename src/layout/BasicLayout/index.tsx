@@ -7,10 +7,13 @@ import classNames from "classnames";
 import SideMenu from "./SideMenu";
 
 
-const { Header, Content,Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
-const BasicLayout = ({ children, route }: any) => {
+const BasicLayout = (props: any) => {
+  const { children, route } = props;
   const [collapsed, setCollapsed] = React.useState(false);
+
+  console.log({ props });
 
 
   const siderNode = (

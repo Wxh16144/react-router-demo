@@ -1,7 +1,26 @@
-import { Redirect, Switch, Route } from 'react-router-dom';
+import { Redirect, Switch, Route, RouteProps } from 'react-router-dom';
+import { RouteItem } from './router/interface';
+
+interface Options {
+  routes: RouteItem[];
+  rootRoutes?: RouteItem[];
+  extraProps?: any;
+}
+interface RenderComponentOptions {
+  route: RouteItem;
+  opts: Options;
+  props: any;
+  extraProps?: Options['extraProps'];
+}
+
+interface RouteElementOptions {
+  route: RouteItem;
+  opts: Options;
+  index: number;
+}
 
 
-function renderComponent({ route, opts, props }: any) {
+function renderComponent({ route, opts, props }: RenderComponentOptions) {
   const routes = renderRoutes({
     ...opts,
     routes: route.routes || [],
@@ -25,9 +44,9 @@ function renderComponent({ route, opts, props }: any) {
   return routes;
 }
 
-function getRouteElement({ route, index, opts }:any) {
+function getRouteElement({ route, index, opts }: RouteElementOptions) {
   const routeProps = {
-    key: route.key || index,
+    key: route.name || index,
     exact: route.exact,
     strict: route.strict,
     sensitive: route.sensitive,
@@ -47,21 +66,20 @@ function getRouteElement({ route, index, opts }:any) {
   );
 }
 
-function renderRoutes(opts: any) {
-  return opts.routes ? (
+function renderRoutes(opts: Options) {
+  return (
     <Switch>
-      {opts.routes.map((route: any, index: number) =>
-        getRouteElement({
-          route,
-          index,
-          opts: {
-            ...opts,
-            rootRoutes: opts.rootRoutes || opts.routes,
-          },
-        }),
-      )}
+      {
+        opts.routes.map((route, index) =>
+          getRouteElement({
+            route,
+            index,
+            opts: { ...opts, rootRoutes: opts.routes },
+          }),
+        )
+      }
     </Switch>
-  ) : null;
+  )
 }
 
 export default renderRoutes;
