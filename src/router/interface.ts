@@ -3,7 +3,7 @@ import { RouteProps } from "react-router-dom";
 /** 路由元素*/
 export interface RouteItem {
   /** 路径 */
-  path: string;
+  path?: string;
   /** 组件 */
   component?: RouteProps["component"];
   /** 路由名称 */
