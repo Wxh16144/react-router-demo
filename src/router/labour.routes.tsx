@@ -8,7 +8,6 @@ import {upperFirst} from 'lodash-es'
 export const LABOR_BASE_PATH = '/labour';
 export const LABOR_EVALUATE_BASE_PATH = `${LABOR_BASE_PATH}/evaluation`;
 
-
 const labourRoutesEvaluation: RouteItem[] = [
   {
     path: LABOR_EVALUATE_BASE_PATH,
@@ -43,7 +42,7 @@ const labourRoutes: RouteItem[] = [
   {
     path: `${COMPANY_BASE_PATH}${LABOR_BASE_PATH}`,
     name: 'labour',
-    icon: 'user',
+    icon: '《图标》',
     title: '劳务管理',
     routes: [
       ...companyLabourRoutesEvaluation,

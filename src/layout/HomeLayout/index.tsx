@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import styles from './HomeLayout.module.less'
+import styles from './index.module.less'
 import { NavLink ,NavLinkProps} from 'react-router-dom'
-import { COMPANY_BASE_PATH, PROJECT_BASE_PATH } from "../router/constants"
-import useProject from '../hooks/useProject'
+import { COMPANY_BASE_PATH, PROJECT_BASE_PATH } from "../../router/constants"
+import useProject from '../../hooks/useProject'
 
 const HomeLayout: FC<any> = ({ children }) => {
   const { isProject } = useProject()
