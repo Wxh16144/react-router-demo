@@ -1,9 +1,10 @@
 import LabourEvaluation from "../pages/labour/evaluation";
 import LabourEvaluationDetail from "../pages/labour/evaluation/detail";
+import LabourEvaluationEdit from "../pages/labour/evaluation/edit";
 import { COMPANY_BASE_PATH, PROJECT_HOME_BASE_PATH } from "./constants";
 import { RouteItem } from "./interface";
 
-import {upperFirst} from 'lodash-es'
+import { upperFirst } from 'lodash-es'
 
 export const LABOR_BASE_PATH = '/labour';
 export const LABOR_EVALUATE_BASE_PATH = `${LABOR_BASE_PATH}/evaluation`;
@@ -21,6 +22,14 @@ const labourRoutesEvaluation: RouteItem[] = [
     name: 'labourEvaluationDetail',
     title: '评价详情',
     component: LabourEvaluationDetail,
+    exact: true,
+    hideInMenu: true,
+  },
+  {
+    path: `${LABOR_EVALUATE_BASE_PATH}/:id/edit`,
+    name: 'labourEvaluationEdit',
+    title: '编辑评价',
+    component: LabourEvaluationEdit,
     exact: true,
     hideInMenu: true,
   }
