@@ -1,57 +1,50 @@
-import React from 'react';
-import { Menu } from 'antd';
+import { ItemType } from 'antd/es/menu/hooks/useItems';
 import classNames from 'classnames';
 import { RouteItem } from '../../../router/interface';
 import { Link } from 'react-router-dom';
 import styles from './index.module.less';
 
 
-const getSubMenuOrItem = (item: RouteItem) => {
+const renderSubMenuOrItem = (item: RouteItem): ItemType => {
 
   if (item.hideInMenu || !item.name) {
-    return null;
+    return null
   }
-
 
   const hasChildren = item.routes && item.routes.length;
 
-  const titleNode = (
+  const label = (
     <span className={styles.menuTitleContent}>
-      {hasChildren ? (
-        <span>{item.title}</span>
-      ) : (
-        <span>
-          <Link to={item.path!}>{item.title}</Link>
-        </span>
-      )}
+      {
+        hasChildren
+          ? <span>{item.title}</span>
+          : <Link to={item.path!}>{item.title}</Link>
+      }
     </span>
   );
 
   if (hasChildren) {
-    const { icon } = item;
-    return (
-      <Menu.SubMenu icon={icon} title={titleNode} key={item.path}>
-        {getNavMenuItems(item.routes)}
-      </Menu.SubMenu>
-    );
+    return {
+      label,
+      icon: item.icon,
+      key: item.path,
+      children: getNavMenuItems(item.routes)
+    }
   }
-
-  return (
-    <Menu.Item
-      key={item.path}
-      icon={item.icon}
-      className={classNames({ 'isLink': item.icon })}
-    >
-      {titleNode}
-    </Menu.Item>
-  );
+  return {
+    label,
+    icon: item.icon,
+    key: item.path,
+    className: classNames({ 'isLink': item.icon })
+  }
 };
 
-function getNavMenuItems(menuDatas?: RouteItem[]) {
+function getNavMenuItems(menuDatas?: RouteItem[]): ItemType[] {
+
   if (!menuDatas) {
     return [];
   }
-  return menuDatas.map(getSubMenuOrItem);
+  return menuDatas.map(renderSubMenuOrItem);
 }
 
 export default getNavMenuItems;

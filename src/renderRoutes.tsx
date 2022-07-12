@@ -1,5 +1,12 @@
-import { Redirect, Switch, Route, RouteProps } from 'react-router-dom';
+import { Redirect, Switch, Route, RouteProps, RouteComponentProps } from 'react-router-dom';
 import { RouteItem } from './router/interface';
+
+
+export type RenderComponentProps = RouteComponentProps & {
+  route: RouteItem;
+  routes: RouteItem[];
+  children: React.ReactNode;
+}
 
 interface Options {
   routes: RouteItem[];
@@ -9,7 +16,7 @@ interface Options {
 interface RenderComponentOptions {
   route: RouteItem;
   opts: Options;
-  props: any;
+  props: RouteComponentProps;
   extraProps?: Options['extraProps'];
 }
 
@@ -28,17 +35,19 @@ function renderComponent({ route, opts, props }: RenderComponentOptions) {
   });
 
   const { component: Component } = route;
+
   if (Component) {
-    const newProps = {
+    const newProps: RenderComponentProps = {
       ...props,
       ...opts.extraProps,
       route,
       routes: opts.rootRoutes,
+      children: routes,
     };
-
+    
     return (
       // TODO: 这里可以添加 ErrorBoundary
-      <Component {...newProps}>{routes}</Component>
+      <Component {...newProps} />
     );
   }
   return routes;
@@ -59,9 +68,7 @@ function getRouteElement({ route, index, opts }: RouteElementOptions) {
   return (
     <Route
       {...routeProps}
-      render={(props) => {
-        return renderComponent({ route, opts, props });
-      }}
+      render={(props) => renderComponent({ route, opts, props })}
     />
   );
 }
@@ -74,7 +81,10 @@ function renderRoutes(opts: Options) {
           getRouteElement({
             route,
             index,
-            opts: { ...opts, rootRoutes: opts.routes },
+            opts: {
+              ...opts,
+              rootRoutes: opts.rootRoutes || opts.routes
+            },
           }),
         )
       }

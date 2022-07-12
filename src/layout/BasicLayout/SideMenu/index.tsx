@@ -19,11 +19,12 @@ const SideMenu = (props: SideMenuProps) => {
   const { menuDatas, collapsed, afterClick, ...menuProps } = props;
   const { pathname } = useLocation()
 
-  
+
   const flatMenuKeys = getFlatMenuKeys(menuDatas);
   const selectedKeys = getSelectedMenuKeys(pathname, flatMenuKeys);
   const defaultOpenKeys = getDefaultCollapsedSubMenus(pathname, flatMenuKeys);
   const [openKeys, setOpenKeys] = useState(defaultOpenKeys);
+
 
   useEffect(() => {
     setOpenKeys(defaultOpenKeys);
@@ -53,6 +54,8 @@ const SideMenu = (props: SideMenuProps) => {
     finalyOpenKeysProps.openKeys = openKeys;
   }
 
+  const items = getNavMenuItems(menuDatas)
+
   return (
     <Menu
       mode="inline"
@@ -61,9 +64,8 @@ const SideMenu = (props: SideMenuProps) => {
       onOpenChange={handleOpenChange}
       onClick={handleClick}
       selectedKeys={selectedKeys}
-    >
-      {getNavMenuItems(menuDatas)}
-    </Menu>
+      items={items}
+    />
   );
 };
 

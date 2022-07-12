@@ -1,10 +1,11 @@
+import { RouteProps } from "react-router-dom";
 
 /** 路由元素*/
 export interface RouteItem {
   /** 路径 */
-  path?: string;
+  path: string;
   /** 组件 */
-  component?: any;
+  component?: RouteProps["component"];
   /** 路由名称 */
   name?: string;
   /** 菜单名称 */
@@ -17,7 +18,7 @@ export interface RouteItem {
   routes?: RouteItem[];
   /** 重定向 */
   redirect?: string;
-  /** 不显示在左边菜单中 (不是权限用) */
+  /** 不显示在左边菜单中 */
   hideInMenu?: boolean;
   /** 传递给组件的 Props */
   extraProps?: any;

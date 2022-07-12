@@ -1,6 +1,7 @@
 import { matchPath } from "react-router-dom";
 import { find } from "lodash-es";
 import { urlToList } from "../../utils";
+import { RouteItem } from "../../router/interface";
 
 const getBreadcrumbData = ({ pathname, routes }: any) => {
   const resultData: any[] = [];
@@ -20,8 +21,8 @@ const getBreadcrumbData = ({ pathname, routes }: any) => {
   };
 
   urlToList(pathname).forEach((value) => {
-    const match = ({ path }: any) => {
-      return matchPath(value, { path, exact: true });
+    const match = ({ path, component }: RouteItem) => {
+      return matchPath(value, { path, exact: true }) && component;
     };
 
     const resultRoute = find(getFlatMenu(routes), match);

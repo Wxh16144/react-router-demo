@@ -5,21 +5,31 @@ import BreadcrumbWrap from "./BreadcrumbWrap";
 import styles from './index.module.less';
 import classNames from "classnames";
 import SideMenu from "./SideMenu";
+import { RenderComponentProps } from "../../renderRoutes";
+import { useRouteMatch } from "react-router";
+import { COMPANY_BASE_PATH, PROJECT_HOME_BASE_PATH, PROJECT_BASE_PATH } from "../../router/constants";
 
 
 const { Header, Content, Sider } = Layout;
 
-const BasicLayout = (props: any) => {
-  const { children, route } = props;
+const BasicLayout: React.FC<RenderComponentProps> = (props) => {
+  const { children, route, } = props;
+
   const [collapsed, setCollapsed] = React.useState(false);
 
-  console.log({ props });
+  const isHome = useRouteMatch(
+    {
+      path: [COMPANY_BASE_PATH, PROJECT_HOME_BASE_PATH, PROJECT_BASE_PATH],
+      exact: true,
+    }
+  )
 
 
   const siderNode = (
     <Sider
-      width={260}
+      width={220}
       theme="light"
+      trigger={null}
       className={styles.sider}
       collapsible
       collapsed={collapsed}
@@ -36,23 +46,27 @@ const BasicLayout = (props: any) => {
 
       <div className={styles.menuContainer}>
         <SideMenu
-          menuDatas={route.routes}
+          menuDatas={route.routes!}
           inlineIndent={collapsed ? 32 : 44}
-          className={styles.menu}
           collapsed={collapsed}
         />
       </div>
     </Sider>
   );
+
   return (
     <Layout>
       {siderNode}
       <Layout>
-        <Header className={styles.header}>
-          <div>
-            <BreadcrumbWrap routes={route.routes} />
-          </div>
-        </Header>
+        {
+          !isHome && (
+            <Header className={styles.header}>
+              <div>
+                <BreadcrumbWrap routes={route.routes} />
+              </div>
+            </Header>
+          )
+        }
         <Content>{children}</Content>
       </Layout>
     </Layout>

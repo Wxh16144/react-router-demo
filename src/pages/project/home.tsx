@@ -13,7 +13,7 @@ const ProjectHome = () => {
     <HomeLayout>
       <h1>项目工作台{projectId}</h1>
       <br />
-      <Link to={`${pathname}${LABOR_EVALUATE_BASE_PATH}`}>前往项目劳务评价列表</Link>
+      <Link to={`${pathname}${LABOR_EVALUATE_BASE_PATH}`}>前往项目{projectId}劳务评价列表</Link>
 
     </HomeLayout>
   )

@@ -13,7 +13,6 @@ const HomeLayout: FC<any> = ({ children }) => {
 
   return (
     <div>
-
       <NavLink
         activeClassName={styles.active}
         exact
