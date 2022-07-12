@@ -11,6 +11,7 @@ import ProjectList from "../pages/project/list";
 import ProjectHome from "../pages/project/home";
 import { COMPANY_BASE_PATH, PROJECT_BASE_PATH, PROJECT_HOME_BASE_PATH } from "./constants";
 import { RouteItem } from "./interface";
+import { NotFound } from "../pages/404";
 
 const router: RouteItem[] = [
   {
@@ -51,6 +52,9 @@ const router: RouteItem[] = [
             exact: true,
           },
           ...labourRoutes,
+          {
+            component: NotFound,
+          }
         ],
       },
     ]

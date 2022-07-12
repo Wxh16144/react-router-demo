@@ -27,14 +27,14 @@ const renderSubMenuOrItem = (item: RouteItem): ItemType => {
     return {
       label,
       icon: item.icon,
-      key: item.path,
+      key: item.path!,
       children: getNavMenuItems(item.routes)
     }
   }
   return {
     label,
     icon: item.icon,
-    key: item.path,
+    key: item.path!,
     className: classNames({ 'isLink': item.icon })
   }
 };
