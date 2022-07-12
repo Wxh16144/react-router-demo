@@ -10,19 +10,15 @@ const Evaluation = (props: any) => {
     <h1>
       {isProject ? `项目(${projectId})` : '企业'}劳务评价列表
       <br />
-      {
-        isProject && (
-          <ul>
-            {
-              Array.from({ length: 10 }).map((_, index) => (
-                <li key={index}>
-                  <NavLink to={`${pathname}/${index}`}>劳务评价{index}</NavLink>
-                </li>
-              ))
-            }
-          </ul>
-        )
-      }
+      <ul>
+        {
+          Array.from({ length: 10 }).map((_, index) => (
+            <li key={index}>
+              <NavLink to={`${pathname}/${index}`}>劳务评价{index}</NavLink>
+            </li>
+          ))
+        }
+      </ul>
     </h1>
   )
 }

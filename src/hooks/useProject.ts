@@ -3,7 +3,6 @@ import {
   DYNAMIC_PROJECT_KEY,
   PROJECT_HOME_BASE_PATH,
 } from "../router/constants";
-import { match } from "path-to-regexp";
 
 export default function useProject() {
   const match = useRouteMatch<any>();
@@ -11,6 +10,6 @@ export default function useProject() {
   
   return {
     isProject: isProject,
-    projectId: match?.params[DYNAMIC_PROJECT_KEY],
+    projectId: isProject ? match.params[DYNAMIC_PROJECT_KEY] as string : void 0,
   };
 }
